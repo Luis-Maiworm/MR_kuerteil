@@ -5,27 +5,30 @@
     <title>Laser input UI</title>
     <meta name="description" content="Laser input UI • A-Frame">
     <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/c-frame/bounding-box/bounding-box.min.js"></script>  
+
+    <script src="https://unpkg.com/three-mesh-ui@6.4.1/build/three-mesh-ui.js"></script>
+
 </head>
 <body>
   <a-scene
-  shadow="type: pcfsoft"
-  renderer="colorManagement: true;"
-  model-viewer="gltf-model: #triceratops; title: Triceratops">
+  disable-multiview
+  >
       <a-plane position="0 0 -5" rotation="-90 0 0" width="20" height="20" color="#FFF" shadow></a-plane>
       <a-camera position="-1.2 1.6 0"></a-camera>
       <a-sky color="#242424"></a-sky>
 
       <a-light type="point" position="-2 3 -5" color="#FFF" intensity="0.5" castShadow></a-light>
       
-      <a-entity rotation="0 -90 0" position="-1 0.5 -3" scale="0.01 0.01 0.01" gltf-model="#painting-frame" bounding-box></a-entity>
+      <a-entity three-mesh-ui></a-entity>
+
+      <a-entity rotation="0 -90 0" position="-1 0.5 -3" scale="0.01 0.01 0.01" gltf-model="#painting-frame"></a-entity>
       
       <a-box rotation="0 -90 0" position="-1 0.5 -3" depth="0.2" height="1" width="2" color="#8B4513"></a-box>
       
       <a-assets>
-        <a-asset-items
+        <a-asset-item
           id="painting-frame" src="models/scene.gltf"
-        ></a-asset-items>
+        ></a-asset-item>
       </a-assets>
   </a-scene>
 
@@ -33,7 +36,38 @@
 </body>
 
 <script>
+  AFRAME.registerComponent('disable-multiview', {
+  init: function () {
+    this.el.sceneEl.renderer.capabilities.isMultiview = false;
+  },
+});
+  AFRAME.registerComponent('three-mesh-ui', {
+      init: function () {
+        const scene = this.el.sceneEl.object3D; // Access the Three.js scene
 
+        // Create a three-mesh-ui Block
+        const container = new THREE.MeshUI.Block({
+          width: 1,
+          height: 0.5,
+          padding: 0.05,
+          backgroundOpacity: 0.5,
+          justifyContent: 'center',
+          alignContent: 'center',
+        });
+
+        container.position.set(0, 1.5, -1); // Position in front of the camera
+
+        // Add a text element
+        const text = new THREE.MeshUI.Text({
+          content: 'Hello A-Frame!',
+          fontSize: 0.1,
+        });
+
+        container.add(text); // Add text to container
+
+        scene.add(container); // Add the UI element to the Three.js scene
+      },
+  });
 </script>
 
 </html>
