@@ -1,0 +1,3 @@
+https://aframe.io/docs/1.6.0/guides/building-a-360-image-gallery.html
+
+https://glitch.com/edit/#!/aframe-simple-saber?path=index.html%3A31%3A42

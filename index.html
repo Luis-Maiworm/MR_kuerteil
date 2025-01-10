@@ -5,34 +5,114 @@
     <title>Laser input UI</title>
     <meta name="description" content="Laser input UI • A-Frame">
     <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/c-frame/bounding-box/bounding-box.min.js"></script>  
+    <script src="https://unpkg.com/aframe-template-component@3.x.x/dist/aframe-template-component.min.js"></script>
+    <script src="https://unpkg.com/aframe-layout-component@5.x.x/dist/aframe-layout-component.min.js"></script>
+    <script src="https://unpkg.com/aframe-event-set-component@5.x.x/dist/aframe-event-set-component.min.js"></script>
+    <script src="https://unpkg.com/aframe-proxy-event-component@2.1.0/dist/aframe-proxy-event-component.min.jss"></script>
+
+    <script src="/start_game.js"></script>
+
+    <script id="link" type="text/html">
+      <a-entity class="link"
+        geometry="primitive: plane; height: 1; width: 1"
+        material="shader: flat; src: ${thumb}"
+        sound="on: click; src: #click-sound"
+        event-set__mouseenter="scale: 1.2 1.2 1"
+        event-set__mouseleave="scale: 1 1 1"
+        event-set__click="_target: #image-360; _delay: 300; material.src: ${src}"
+        proxy-event="event: click; to: #image-360; as: fade"></a-entity>
+    </script>
 </head>
 <body>
+  <!-- pool__cubes="mixin: cube; size:10" -->
   <a-scene
-  shadow="type: pcfsoft"
-  renderer="colorManagement: true;"
-  model-viewer="gltf-model: #triceratops; title: Triceratops">
-      <a-plane position="0 0 -5" rotation="-90 0 0" width="20" height="20" color="#FFF" shadow></a-plane>
-      <a-camera position="-1.2 1.6 0"></a-camera>
-      <a-sky color="#242424"></a-sky>
+  >
+    <a-assets>
+      <audio id="click-sound" src="https://cdn.aframe.io/360-image-gallery-boilerplate/audio/click.ogg"></audio>
+      <!-- Images. -->
+      <img id="city" src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/city.jpg">
+      <img id="city-thumb" src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/thumb-city.jpg">
+      <img id="cubes" src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/cubes.jpg">
+      <img id="cubes-thumb" src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/thumb-cubes.jpg">
+      <img id="sechelt" src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/sechelt.jpg">
+      <img id="sechelt-thumb" src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/thumb-sechelt.jpg">
+      <a-mixin
+        id="cube"
+        geometry="primitive: box"
+        position="0 1 -25"
+        scale="0.5 0.5 0.5"
+        cubemovement
+        cubedestroyer
+      ></a-mixin>
 
-      <a-light type="point" position="-2 3 -5" color="#FFF" intensity="0.5" castShadow></a-light>
-      
-      <a-entity rotation="0 -90 0" position="-1 0.5 -3" scale="0.01 0.01 0.01" gltf-model="#painting-frame" bounding-box></a-entity>
-      
-      <a-box rotation="0 -90 0" position="-1 0.5 -3" depth="0.2" height="1" width="2" color="#8B4513"></a-box>
-      
-      <a-assets>
-        <a-asset-items
-          id="painting-frame" src="models/scene.gltf"
-        ></a-asset-items>
-      </a-assets>
+    </a-assets> 
+    
+
+    <a-sky id="image-360" rotation="0 180 0" radius="10" src="#city"
+             animation__fade="property: components.material.material.color; type: color; from: #FFF; to: #000; dur: 300; startEvents: fade"
+             animation__fadeback="property: components.material.material.color; type: color; from: #000; to: #FFF; dur: 300; startEvents: animationcomplete__fade"></a-sky>
+
+
+    <a-entity id="settingsWrapper">
+      <a-text value="Settings" align="center" scale="1.5 1.5 1.5" position="0.2 0 -4"></a-text>
+      <a-text value="Settings" align="center" color="black" scale="1.4 1.4 1.4" position="0.2 0 -4.1"></a-text>
+      <a-entity id="links" layout="type: line; margin: 1.15" position="-1.5 -1 -4">
+        <a-entity template="src: #link" data-src="#city" data-thumb="#city-thumb"></a-entity>
+        <a-entity template="src: #link" data-src="#cubes" data-thumb="#cubes-thumb"></a-entity>
+        <a-entity template="src: #link" data-src="#sechelt" data-thumb="#sechelt-thumb"></a-entity>
+        <a-entity id="startGameButton"
+          material="color: #242424"
+          geometry="primitive: plane; height: 1; width: 1"
+          sound="on: click; src: #click-sound"
+          event-set__mouseenter="scale: 1.2 1.2 1"
+          event-set__mouseleave="scale: 1 1 1"
+          >
+          <a-text value="Start Game"
+          scale="0.8 0.8 0.8"
+          align="center"
+          >
+  
+          </a-text>
+        </a-entity>
+      </a-entity>
+    </a-entity>
+
+
+
+    <a-entity camera look-controls>
+      <a-cursor
+        id="cursor"
+        animation__click="property: scale; startEvents: click; from: 0.1 0.1 0.1; to: 1 1 1; dur: 150"
+        animation__fusing="property: fusing; startEvents: fusing; from: 1 1 1; to: 0.1 0.1 0.1; dur: 1500"
+        event-set__mouseenter="_event: mouseenter; color: springgreen"
+        event-set__mouseleave="_event: mouseleave; color: black"
+        raycaster="objects: .link, #startGameButton"></a-cursor>
+    </a-entity>
+
+
   </a-scene>
 
     
 </body>
 
 <script>
+
+document.addEventListener('DOMContentLoaded', () => {
+    const hideButton = document.querySelector('#hideButton');
+    const links = document.querySelector('#links');
+    const camera = document.querySelector('[camera]');
+
+    // Add event listener to the button
+    hideButton.addEventListener('click', () => {
+      // Hide links
+      links.setAttribute('visible', 'false');
+
+      // Move camera
+      camera.setAttribute('position', { x: 0, y: 2, z: 0 });
+
+      console.log('Links hidden and camera moved!');
+    });
+  });
 
 </script>
 
