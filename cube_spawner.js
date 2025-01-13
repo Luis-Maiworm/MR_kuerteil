@@ -53,8 +53,10 @@ function isDestroyable() {
       // cubeEl.setAttribute('class', 'cubes' + (destroyable ? 'destroyable' : ''));
       if(destroyable) {
         cubeEl.setAttribute('material', `color: red`);
-        cubeEl.setAttribute('class', (destroyable ? 'destroyable' : ''));
+        cubeEl.setAttribute('class', 'destroyable');
+        // cubeEl.setAttribute('class', 'collidable');
       } else {
+        cubeEl.classList.remove('destroyable')
         cubeEl.setAttribute('material', `color: white`);
       }
       console.log("Cube created: ", cubeEl)

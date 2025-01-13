@@ -12,8 +12,13 @@ document.addEventListener('DOMContentLoaded', () => {
     startGame.addEventListener('click', () => {
         console.log("Start Button: Click!")
         // Hide links
-        links.setAttribute('visible', 'false');
-        settingsWrapper.setAttribute('visible', 'false');
+        // links.setAttribute('visible', 'false');
+        // settingsWrapper.setAttribute('visible', 'false');
+
+        
+        links.parentNode.removeChild(links)
+        settingsWrapper.parentNode.removeChild(settingsWrapper)
+
         spawner.components.cubespawner.startSpawning();
 
         // //rotating or let user look in correct direction? 

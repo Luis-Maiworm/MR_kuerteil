@@ -88,12 +88,13 @@
 
     <a-entity camera look-controls>
       <a-cursor
+        collider-check
         id="cursor"
         animation__click="property: scale; startEvents: click; from: 0.1 0.1 0.1; to: 1 1 1; dur: 150"
         animation__fusing="property: fusing; startEvents: fusing; from: 1 1 1; to: 0.1 0.1 0.1; dur: 1500"
         event-set__mouseenter="_event: mouseenter; color: springgreen"
         event-set__mouseleave="_event: mouseleave; color: black"
-        raycaster="showLine: true; far: 50; objects: .cubes, #cube, .link, #startGameButton"></a-cursor>
+        raycaster="showLine: true; far: 5; objects: .destroyable, .cubes, #cube, .link, #startGameButton"></a-cursor>
     </a-entity>
 
 
@@ -103,10 +104,16 @@
 </body>
 
 <script>
+AFRAME.registerComponent('collider-check', {
+  dependencies: ['raycaster'],
 
-document.querySelector('#cursor').addEventListener('raycaster-intersected', function(event) {
-  console.log("INTERSECTED OBJECT:", event.detail.intersectedEl);
-})
+  init: function () {
+    this.el.addEventListener('raycaster-intersection', function () {
+      console.log('Player hit something!');
+    });
+  }
+});
+
 // document.addEventListener('DOMContentLoaded', () => {
 //     const hideButton = document.querySelector('#hideButton');
 //     const links = document.querySelector('#links');

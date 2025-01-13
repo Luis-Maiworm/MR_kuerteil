@@ -4,7 +4,7 @@ AFRAME.registerComponent('cubedestroyer', {
       el.addEventListener('raycaster-intersected', function() {
         console.log("INTERSECTED!", el)
         if(el.classList.contains('destroyable')){
-          this.el.sceneEl.components.pool__cubes.returnEntity(this.el);
+          el.sceneEl.components.pool__cubes.returnEntity(el);
           // el.parentNode.removeChild(el);
         }
       })
@@ -18,3 +18,4 @@ AFRAME.registerComponent('cubedestroyer', {
       }
     }
 });
+

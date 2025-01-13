@@ -5,6 +5,6 @@ AFRAME.registerComponent('cubemovement', {
     
     tick: function (time, timeDelta) {
       // this.position.z += 0.01 * timeDelta;
-      this.position.z += 0.005 * timeDelta;
+      this.position.z += 0.007 * timeDelta;
     }
 });
