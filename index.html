@@ -11,6 +11,9 @@
     <script src="https://unpkg.com/aframe-proxy-event-component@2.1.0/dist/aframe-proxy-event-component.min.jss"></script>
 
     <script src="/start_game.js"></script>
+    <script src="/cube_movement.js"></script>
+    <script src="/cube_destroyer.js"></script>
+    <script src="/cube_spawner.js"></script>
 
     <script id="link" type="text/html">
       <a-entity class="link"
@@ -26,6 +29,9 @@
 <body>
   <!-- pool__cubes="mixin: cube; size:10" -->
   <a-scene
+  renderer="antialias: true"
+  pool__cubes="mixin: cube; size: 10"
+  cubespawner
   >
     <a-assets>
       <audio id="click-sound" src="https://cdn.aframe.io/360-image-gallery-boilerplate/audio/click.ogg"></audio>
@@ -38,6 +44,7 @@
       <img id="sechelt-thumb" src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/thumb-sechelt.jpg">
       <a-mixin
         id="cube"
+        class="cubes"
         geometry="primitive: box"
         position="0 1 -25"
         scale="0.5 0.5 0.5"
@@ -86,7 +93,7 @@
         animation__fusing="property: fusing; startEvents: fusing; from: 1 1 1; to: 0.1 0.1 0.1; dur: 1500"
         event-set__mouseenter="_event: mouseenter; color: springgreen"
         event-set__mouseleave="_event: mouseleave; color: black"
-        raycaster="objects: .link, #startGameButton"></a-cursor>
+        raycaster="showLine: true; far: 50; objects: .cubes, #cube, .link, #startGameButton"></a-cursor>
     </a-entity>
 
 
@@ -97,6 +104,9 @@
 
 <script>
 
+document.querySelector('#cursor').addEventListener('raycaster-intersected', function(event) {
+  console.log("INTERSECTED OBJECT:", event.detail.intersectedEl);
+})
 // document.addEventListener('DOMContentLoaded', () => {
 //     const hideButton = document.querySelector('#hideButton');
 //     const links = document.querySelector('#links');
