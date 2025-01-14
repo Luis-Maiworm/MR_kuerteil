@@ -1,65 +1,79 @@
-// random num generator
+const cubeTypes = [
+  {
+    name: 'rayCube',
+    classes: ['ray-destroy'],
+    material: 'color: red; opacity: 0.8',
+
+    components: {
+      cubemovement: {},
+      cubedestroyer: {},
+    }
+  },
+  {
+    name: 'saberCube',
+    classes: ['saber-destroy'],
+    material: 'color: white; opacity: 0.8',
+    // components: {
+    //   cubemovement: {},
+    //   cubedestroyer: {},
+    // }
+  },
+]
+
 function getRandomNumber(value, offset) {
     return Math.floor(Math.random() * value + offset);
-  }
+}
   
-// get either red or blue
-function getRedOrBlue() {
-  return getRandomNumber(10, 0) > 5 ? "blue" : "red";
-}
+AFRAME.registerComponent('cubespawner', {
+  init: function() {
+    this.timeStep = 0;
+    this.isSpawning = false;
+  },
 
-function isDestroyable() {
-  return getRandomNumber(10, 0) > 5;
-}
+  configureCube: function (cubeEl, cubeConfig) {
+    cubeEl.className = 'cubes';
+    cubeConfig.classes.forEach(c => cubeEl.classList.add(c))
 
-  AFRAME.registerComponent('cubespawner', {
-    init: function() {
-      this.timeStep = 0;
-      this.isSpawning = false;
-    },
+    cubeEl.setAttribute('material', cubeConfig.material);
     
-    startSpawning: function () {
-      this.isSpawning = true;
-    },
-
-    stopSpawning: function () {
-      this.isSpawning = false;
-    },
-
-    tick: function (time, timeDelta) {
-      if(!this.isSpawning) {
-        return;
-      }
-
-      if (this.timeStep < 1000) {
-        this.timeStep += timeDelta;
-        return;
-      }
-      this.timeStep = 0;
-      
-      var cubeEl = this.el.components.pool__cubes.requestEntity();
-      if (!cubeEl) {
-        return;
-      }
-      
-      var positionX = getRandomNumber(3, -1);
-      var positionY = getRandomNumber(1, 0.5);
-      var positionZ = -25;
-      
-      // var cubeColor = getRedOrBlue();
-      var destroyable = isDestroyable()
-
-      cubeEl.setAttribute('position', {x: positionX, y: positionY, z: positionZ});
-      // cubeEl.setAttribute('class', 'cubes' + (destroyable ? 'destroyable' : ''));
-      if(destroyable) {
-        cubeEl.setAttribute('material', `color: red`);
-        cubeEl.setAttribute('class', 'destroyable');
-        // cubeEl.setAttribute('class', 'collidable');
-      } else {
-        cubeEl.classList.remove('destroyable')
-        cubeEl.setAttribute('material', `color: white`);
-      }
-      console.log("Cube created: ", cubeEl)
-      cubeEl.play();
+    for (const [component, value] of Object.entries(cubeConfig.components)) {
+      cubeEl.setAttribute(component, value);
     }
-  });
+
+  },
+
+  
+  startSpawning: function () {
+    this.isSpawning = true;
+  },
+
+  stopSpawning: function () {
+    this.isSpawning = false;
+  },
+
+  tick: function (time, timeDelta) {
+    if(!this.isSpawning) {
+      return;
+    }
+
+    if (this.timeStep < 1000) {
+      this.timeStep += timeDelta;
+      return;
+    }
+    this.timeStep = 0;
+    
+    var cubeEl = this.el.components.pool__cubes.requestEntity();
+    if (!cubeEl) {
+      return;
+    }
+    
+    var positionX = getRandomNumber(3, -1);
+    var positionY = getRandomNumber(1, 0.5);
+    var positionZ = -25;
+
+    cubeEl.setAttribute('position', {x: positionX, y: positionY, z: positionZ});
+    this.configureCube(cubeEl, cubeTypes[0]);
+
+    cubeEl.play();
+  }
+});

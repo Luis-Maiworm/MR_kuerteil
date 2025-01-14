@@ -9,11 +9,16 @@
     <script src="https://unpkg.com/aframe-layout-component@5.x.x/dist/aframe-layout-component.min.js"></script>
     <script src="https://unpkg.com/aframe-event-set-component@5.x.x/dist/aframe-event-set-component.min.js"></script>
     <script src="https://unpkg.com/aframe-proxy-event-component@2.1.0/dist/aframe-proxy-event-component.min.jss"></script>
-
+    
+    <script src="https://unpkg.com/aframe-aabb-collider-component@3.1.0/dist/aframe-aabb-collider-component.min.js"></script>
+    
     <script src="/start_game.js"></script>
     <script src="/cube_movement.js"></script>
     <script src="/cube_destroyer.js"></script>
     <script src="/cube_spawner.js"></script>
+    <script src="/scoresystem.js"></script>
+    <script src="/scoreboard.js"></script>
+    <script src="/saber.js"></script>
 
     <script id="link" type="text/html">
       <a-entity class="link"
@@ -32,6 +37,7 @@
   renderer="antialias: true"
   pool__cubes="mixin: cube; size: 10"
   cubespawner
+  scoresystem
   >
     <a-assets>
       <audio id="click-sound" src="https://cdn.aframe.io/360-image-gallery-boilerplate/audio/click.ogg"></audio>
@@ -43,14 +49,13 @@
       <img id="sechelt" src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/sechelt.jpg">
       <img id="sechelt-thumb" src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/thumb-sechelt.jpg">
       <a-mixin
-        id="cube"
-        class="cubes"
         geometry="primitive: box"
+        id="cube"
         position="0 1 -25"
         scale="0.5 0.5 0.5"
-        cubemovement
-        cubedestroyer
-      ></a-mixin>
+        ></a-mixin>
+        <!-- cubemovement -->
+        <!-- cubedestroyer -->
 
     </a-assets> 
     
@@ -84,6 +89,7 @@
       </a-entity>
     </a-entity>
 
+    <a-entity scoreboard id="scoreboard" text="value: Score 0" scale="10 10 10" position="0.2 1 -8"></a-entity>
 
 
     <a-entity camera look-controls>
@@ -94,9 +100,39 @@
         animation__fusing="property: fusing; startEvents: fusing; from: 1 1 1; to: 0.1 0.1 0.1; dur: 1500"
         event-set__mouseenter="_event: mouseenter; color: springgreen"
         event-set__mouseleave="_event: mouseleave; color: black"
-        raycaster="showLine: true; far: 5; objects: .destroyable, .cubes, #cube, .link, #startGameButton"></a-cursor>
+        raycaster="showLine: true; far: 5; objects: .ray-destroy, .cubes, .link, #startGameButton"></a-cursor>
     </a-entity>
 
+
+    <!-- <a-entity hand-controls="left"> -->
+    <a-entity laser-controls="hand: left"
+    >
+      <a-entity 
+                rotation="-45 0 0">
+        <a-box id="redSaber" 
+               color="red" 
+               width="0.05" 
+               height="1" 
+               depth="0.05"
+               saber="red"
+               aabb-collider="objects: .cubes"
+        ></a-box>
+      </a-entity>
+    </a-entity>
+    <!-- <a-entity hand-controls="right"> -->
+    <a-entity laser-controls="hand: right">
+      <a-entity 
+                  rotation="-45 0 0">
+          <a-box id="blueSaber" 
+                 color="blue" 
+                 width="0.05" 
+                 height="1" 
+                 depth="0.05"
+                 saber="blue"
+                 aabb-collider="objects: .cubes"
+          ></a-box>
+        </a-entity>
+    </a-entity>
 
   </a-scene>
 
@@ -113,23 +149,6 @@ AFRAME.registerComponent('collider-check', {
     });
   }
 });
-
-// document.addEventListener('DOMContentLoaded', () => {
-//     const hideButton = document.querySelector('#hideButton');
-//     const links = document.querySelector('#links');
-//     const camera = document.querySelector('[camera]');
-
-//     // Add event listener to the button
-//     hideButton.addEventListener('click', () => {
-//       // Hide links
-//       links.setAttribute('visible', 'false');
-
-//       // Move camera
-//       camera.setAttribute('position', { x: 0, y: 2, z: 0 });
-
-//       console.log('Links hidden and camera moved!');
-//     });
-//   });
 
 </script>
 
