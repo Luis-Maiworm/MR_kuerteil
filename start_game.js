@@ -4,6 +4,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const links = document.querySelector('#links');
     const camera = document.querySelector('[camera]');
     const settingsWrapper = document.querySelector('#settingsWrapper');
+    const score = document.querySelector('#scoreboard');
+    
     const spawner = document.querySelector("[cubespawner]");
     console.log(camera)
     
@@ -18,6 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
         
         links.parentNode.removeChild(links)
         settingsWrapper.parentNode.removeChild(settingsWrapper)
+        score.setAttribute('visible', true);
 
         spawner.components.cubespawner.startSpawning();
 

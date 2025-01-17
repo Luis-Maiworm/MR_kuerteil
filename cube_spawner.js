@@ -2,21 +2,30 @@ const cubeTypes = [
   {
     name: 'rayCube',
     classes: ['ray-destroy'],
-    material: 'color: red; opacity: 0.8',
-
+    // material: 'color: white; emissive: blue; emissiveIntensity: 0.8; ',
+    material: 'src: url(./assets/eye.svg); repeat: 1 1;',
     components: {
       cubemovement: {},
       cubedestroyer: {},
     }
   },
   {
-    name: 'saberCube',
+    name: 'saberCubeRed',
     classes: ['saber-destroy'],
-    material: 'color: white; opacity: 0.8',
-    // components: {
-    //   cubemovement: {},
-    //   cubedestroyer: {},
-    // }
+    material: 'color: red; opacity: 1.0',
+    components: {
+      cubemovement: {},
+      cubedestroyer: {},
+    }
+  },
+  {
+    name: 'saberCubeBlue',
+    classes: ['saber-destroy'],
+    material: 'color: blue; opacity: 1.0',
+    components: {
+      cubemovement: {},
+      cubedestroyer: {},
+    }
   },
 ]
 
@@ -32,10 +41,13 @@ AFRAME.registerComponent('cubespawner', {
 
   configureCube: function (cubeEl, cubeConfig) {
     cubeEl.className = 'cubes';
-    cubeConfig.classes.forEach(c => cubeEl.classList.add(c))
+    cubeEl.removeAttribute('material', 'src');
+    cubeConfig.classes?.forEach(c => cubeEl.classList.add(c))
 
-    cubeEl.setAttribute('material', cubeConfig.material);
-    
+    if(cubeConfig.material) {
+      cubeEl.setAttribute('material', cubeConfig.material)
+    }
+
     for (const [component, value] of Object.entries(cubeConfig.components)) {
       cubeEl.setAttribute(component, value);
     }
@@ -72,7 +84,10 @@ AFRAME.registerComponent('cubespawner', {
     var positionZ = -25;
 
     cubeEl.setAttribute('position', {x: positionX, y: positionY, z: positionZ});
-    this.configureCube(cubeEl, cubeTypes[0]);
+
+    config = cubeTypes[Math.floor(Math.random() * cubeTypes.length)]
+
+    this.configureCube(cubeEl, config);
 
     cubeEl.play();
   }
