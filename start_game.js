@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const camera = document.querySelector('[camera]');
     const settingsWrapper = document.querySelector('#settingsWrapper');
     const score = document.querySelector('#scoreboard');
-    
+    const audioElement = document.getElementById('geometry-dash-music')
     const spawner = document.querySelector("[cubespawner]");
     console.log(camera)
     
@@ -13,20 +13,24 @@ document.addEventListener('DOMContentLoaded', () => {
     // Add event listener to the button
     startGame.addEventListener('click', () => {
         console.log("Start Button: Click!")
-        // Hide links
-        // links.setAttribute('visible', 'false');
-        // settingsWrapper.setAttribute('visible', 'false');
 
         
         links.parentNode.removeChild(links)
         settingsWrapper.parentNode.removeChild(settingsWrapper)
         score.setAttribute('visible', true);
 
+        if (audioElement) {
+          audioElement.loop = true;
+          audioElement.play()
+            .then(() => {
+              console.log('Audio gestartet und wird geloopt!');
+            })
+            .catch(error => {
+              console.error('Fehler beim Starten des Audios:', error);
+            });
+        }
+      
         spawner.components.cubespawner.startSpawning();
-
-        // //rotating or let user look in correct direction? 
-        // camera.setAttribute('look-controls', 'enabled', 'false')
-        // camera.setAttribute('rotation', '0 180 0')
 
       console.log('Links hidden and camera moved!');
     });
