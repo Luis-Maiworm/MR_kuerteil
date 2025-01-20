@@ -3,12 +3,13 @@ AFRAME.registerComponent('mapcheck', {
       const sceneEl = this.el.sceneEl;
         
 
-      const linkEls = document.querySelector('.link');
+      const linkEls = document.querySelectorAll('.link');
         
       if(!linkEls) {
         return;
       }
       sceneEl.addEventListener('enter-vr', () => {
+        console.log("IS AR: ", sceneEl.isAR)
         const isAR = sceneEl.xrSession && sceneEl.xrSession.mode === 'immersive-ar';
         if (isAR) {
           console.log('AR-Modus aktiviert');

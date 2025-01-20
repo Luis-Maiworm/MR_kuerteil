@@ -25,11 +25,5 @@ AFRAME.registerComponent('cubedestroyer', {
       }
     },
 
-
-    returnToPool: function () {
-      /** TODO: Return to Pool + make sure that the cubes are no longer targetable by raycaster
-       */
-    }
-
 });
 

@@ -20,6 +20,7 @@
     <script src="./scoreboard.js"></script>
     <script src="./saber.js"></script>
     <script src="./mapcheck.js"></script>
+    <script src="./controller-click.js"></script>
 
     <script id="link" type="text/html">
       <a-entity class="link"
@@ -40,6 +41,7 @@
   cubespawner
   scoresystem
   mapcheck
+  controller-click
   >
     <a-assets>
       <audio id="click-sound" src="https://cdn.aframe.io/360-image-gallery-boilerplate/audio/click.ogg"></audio>
@@ -108,7 +110,7 @@
 
 
     <!-- <a-entity hand-controls="left"> -->
-    <a-entity laser-controls="hand: left"
+    <a-entity  laser-controls="hand: left"
     >
       <a-entity 
                 rotation="-45 0 0">
@@ -123,7 +125,7 @@
       </a-entity>
     </a-entity>
     <!-- <a-entity hand-controls="right"> -->
-    <a-entity laser-controls="hand: right">
+    <a-entity  laser-controls="hand: right">
       <a-entity 
                   rotation="-45 0 0">
           <a-box id="blueSaber" 
