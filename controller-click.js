@@ -1,19 +1,7 @@
 AFRAME.registerComponent('controller-click', {
     init: function () {
       const sceneEl = this.el.sceneEl;
-  
-      console.log('Controller-Click-Komponente initialisiert.');
-  
-      // Prüfe, ob ein Controller verbunden ist
-      sceneEl.addEventListener('controllerconnected', (evt) => {
-        console.log(`Controller verbunden: ${evt.detail.name}`);
-      });
-      sceneEl.addEventListener('gamepadbuttondown', (evt) => {
-        console.log(`Clicked the 7!!!: ${evt.detail.name}`);
-      });
-      sceneEl.addEventListener('gamepadbuttondown: 7', (evt) => {
-        console.log(`Clicked the 7!!!: ${evt.detail.name}`);
-      });
+
     },
     
     tick: function () {
@@ -42,7 +30,7 @@ AFRAME.registerComponent('controller-click', {
   
       if (intersectedEl) {
         console.log('Interaktion mit:', intersectedEl.object.el);
-        intersectedEl.object.el.emit('click'); // Click-Event auf Cube auslösen
+        intersectedEl.object.el.emit('click');
       } else {
         console.log('Keine Interaktion erkannt.');
       }

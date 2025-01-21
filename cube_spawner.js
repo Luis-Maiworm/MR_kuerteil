@@ -80,7 +80,7 @@ AFRAME.registerComponent('cubespawner', {
     }
     
     var positionX = getRandomNumber(3, -1);
-    var positionY = getRandomNumber(1, 0.5);
+    var positionY = getRandomNumber(1.5, 1);
     var positionZ = -25;
 
     cubeEl.setAttribute('position', {x: positionX, y: positionY, z: positionZ});

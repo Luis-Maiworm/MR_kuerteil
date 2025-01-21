@@ -13,7 +13,7 @@ AFRAME.registerComponent('saber', {
             saberEl.sceneEl.systems['scoresystem'].addScore(1);
             saberEl.sceneEl.components.pool__cubes.returnEntity(obj);
           }
-        }
+        } 
       });
     }
 });

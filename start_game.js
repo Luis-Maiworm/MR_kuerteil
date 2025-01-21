@@ -2,12 +2,10 @@
 document.addEventListener('DOMContentLoaded', () => {
     const startGame = document.querySelector('#startGameButton');
     const links = document.querySelector('#links');
-    const camera = document.querySelector('[camera]');
     const settingsWrapper = document.querySelector('#settingsWrapper');
     const score = document.querySelector('#scoreboard');
     const audioElement = document.getElementById('geometry-dash-music')
     const spawner = document.querySelector("[cubespawner]");
-    console.log(camera)
     
 
     // Add event listener to the button

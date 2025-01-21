@@ -1,7 +1,7 @@
 AFRAME.registerComponent('mapcheck', {
     init: function () {
       const sceneEl = this.el.sceneEl;
-        
+      const camera = document.querySelector('[camera]').setAttribute('position', { x: 5, y: 2, z: -3 });
 
       const linkEls = document.querySelectorAll('.link');
         
@@ -9,6 +9,8 @@ AFRAME.registerComponent('mapcheck', {
         return;
       }
       sceneEl.addEventListener('enter-vr', () => {
+        camera.setAttribute('position', {x: 0, y: -1.6, z: 0});
+
         console.log("IS AR: ", sceneEl.isAR)
         const isAR = sceneEl.xrSession && sceneEl.xrSession.mode === 'immersive-ar';
         if (isAR) {
