@@ -6,7 +6,6 @@ AFRAME.registerComponent('controller-click', {
     
     tick: function () {
         const gamepads = navigator.getGamepads();
-        // console.log("Gamepads: ", gamepads)
         if(!gamepads || !gamepads[0]) return;
 
         const gamepad = gamepads[0];
@@ -17,7 +16,6 @@ AFRAME.registerComponent('controller-click', {
     },
   
     handleClick: function () {
-      // Logik für das Click-Event hier
       console.log('Click-Event ausgelöst!');
       const cursor = document.querySelector('[cursor]');
       if (!cursor) {
@@ -26,7 +24,7 @@ AFRAME.registerComponent('controller-click', {
       }
   
       const raycaster = cursor.components.raycaster;
-      const intersectedEl = raycaster.getIntersection(document.querySelector('.links'));
+      const intersectedEl = raycaster.getIntersection(document.querySelector('.link'));
   
       if (intersectedEl) {
         console.log('Interaktion mit:', intersectedEl.object.el);

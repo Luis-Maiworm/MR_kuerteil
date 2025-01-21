@@ -21,6 +21,7 @@
     <script src="./saber.js"></script>
     <script src="./mapcheck.js"></script>
     <script src="./controller-click.js"></script>
+    <script src="./controller.js"></script>
 
     <script id="link" type="text/html">
       <a-entity class="link"
@@ -109,7 +110,7 @@
     </a-entity>
 
 
-    <a-entity  laser-controls="hand: left"
+    <a-entity controller oculus-touch-controls laser-controls="hand: left"
     >
       <a-entity 
                 rotation="-45 0 0">
@@ -123,7 +124,7 @@
         ></a-box>
       </a-entity>
     </a-entity>
-    <a-entity  laser-controls="hand: right">
+    <a-entity controller oculus-touch-controls laser-controls="hand: right">
       <a-entity 
                   rotation="-45 0 0">
           <a-box id="blueSaber" 
