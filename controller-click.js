@@ -8,32 +8,24 @@ AFRAME.registerComponent('controller-click', {
       sceneEl.addEventListener('controllerconnected', (evt) => {
         console.log(`Controller verbunden: ${evt.detail.name}`);
       });
+      sceneEl.addEventListener('gamepadbuttondown', (evt) => {
+        console.log(`Clicked the 7!!!: ${evt.detail.name}`);
+      });
       sceneEl.addEventListener('gamepadbuttondown: 7', (evt) => {
         console.log(`Clicked the 7!!!: ${evt.detail.name}`);
       });
     },
-  
-    // tick: function () {
-    //   // Rufe die Gamepads ab
-    //   const gamepads = navigator.getGamepads();
-  
-    //   // Überprüfe, ob ein Controller verbunden ist
-    //   if (!gamepads || !gamepads[0]) return;
-  
-    //   const gamepad = gamepads[0];
-  
-    //   // Prüfe, ob der X-Button (Button 2) gedrückt wird
-    //   if (gamepad.buttons[2].pressed) {
-    //     console.log('X-Button gedrückt!');
-    //     this.handleClick();
-    //   }
-  
-    //   // Prüfe, ob der Y-Button (Button 3) gedrückt wird
-    //   if (gamepad.buttons[3].pressed) {
-    //     console.log('Y-Button gedrückt!');
-    //     this.handleClick();
-    //   }
-    // },
+    
+    tick: function () {
+        const gamepads = navigator.getGamepads();
+        // console.log("Gamepads: ", gamepads)
+        if(!gamepads || !gamepads[0]) return;
+
+        const gamepad = gamepads[0];
+        if (gamepad.buttons[0].pressed || gamepad.buttons[1] || gamepad.buttons[2] || gamepad.buttons[3]) {
+          console.log("Button Pressed")
+        }
+    },
   
     handleClick: function () {
       // Logik für das Click-Event hier
