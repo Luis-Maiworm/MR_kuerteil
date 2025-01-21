@@ -23,6 +23,7 @@ AFRAME.registerComponent('controller-click', {
 
         const gamepad = gamepads[0];
         if (gamepad.buttons[0].pressed || gamepad.buttons[1] || gamepad.buttons[2] || gamepad.buttons[3]) {
+          this.handleClick();
           console.log("Button Pressed")
         }
     },
