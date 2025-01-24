@@ -18,7 +18,8 @@ AFRAME.registerComponent('vrsetup', {
         if (isAR) {
           this.enterAr(sky)
         } else {
-          this.enterVr(sky)
+          this.enterAr(sky)
+          // this.enterVr(sky)
         }
       });
     },
