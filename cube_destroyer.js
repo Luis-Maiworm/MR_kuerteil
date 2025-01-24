@@ -2,14 +2,18 @@
 AFRAME.registerComponent('cubedestroyer', {
     init: function() {
       const el = this.el;
+      const destroyCube = this.destroyCube.bind(this);
+
       el.addEventListener('raycaster-intersected', function() {
-        console.log("INTERSECTED!", el)
         if(!el.getAttribute('visible')) return;
         if(el.classList.contains('ray-destroy')){
-          console.log("should be added")
-          el.sceneEl.systems['scoresystem'].addScore(1);
-          el.sceneEl.components.pool__cubes.returnEntity(el);
-          el.setAttribute('visible', false);
+          destroyCube(true);
+        }
+      })
+
+      el.addEventListener('click', function () {
+        if(el.classList.contains('saber-destroy')){
+          destroyCube(true);
         }
       })
 
@@ -18,12 +22,17 @@ AFRAME.registerComponent('cubedestroyer', {
     tick: function () {
       this.position = this.el.getAttribute('position');
       if (this.position.z >= 10) {
-        this.el.sceneEl.systems['scoresystem'].minusScore(1);
-        this.el.sceneEl.components.pool__cubes.returnEntity(this.el);
-        // as the component is still targetable by ray...
-        this.el.setAttribute('visible', false);
+        this.destroyCube(false);
       }
     },
+
+    destroyCube: function (isPositive) {
+      const score = this.el.sceneEl.systems['scoresystem'];
+      if(isPositive) { score.addScore(1) }
+      else score.minusScore(1);
+      this.el.sceneEl.components.pool__cubes.returnEntity(this.el);
+      this.el.setAttribute('visible', false);
+    }
 
 });
 

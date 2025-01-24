@@ -16,19 +16,19 @@ AFRAME.registerComponent('vrsetup', {
         const isAR = mode && mode === 'immersive-ar';
 
         if (isAR) {
-          this.enterAr()
+          this.enterAr(sky)
         } else {
-          this.enterVr()
+          this.enterVr(sky)
         }
       });
     },
-    enterAr: function () {
-      this.sky.setAttribute('src', '')
-      this.sky.setAttribute('visible', 'false')
+    enterAr: function (sky) {
+      sky.setAttribute('src', '')
+      sky.setAttribute('visible', 'false')
     },
 
-    enterVr: function () {
-      this.sky.setAttribute('visible', 'true')
+    enterVr: function (sky) {
+      sky.setAttribute('visible', 'true')
       console.log('VR-Modus aktiviert');
     },
   });
