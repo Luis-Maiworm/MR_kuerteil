@@ -12,7 +12,7 @@ const cubeTypes = [
   {
     name: 'saberCubeRed',
     classes: ['saber-destroy'],
-    material: 'color: red; opacity: 1.0',
+    material: 'color: red;',
     components: {
       cubemovement: {},
       cubedestroyer: {},
@@ -21,7 +21,7 @@ const cubeTypes = [
   {
     name: 'saberCubeBlue',
     classes: ['saber-destroy'],
-    material: 'color: blue; opacity: 1.0',
+    material: 'color: blue;',
     components: {
       cubemovement: {},
       cubedestroyer: {},

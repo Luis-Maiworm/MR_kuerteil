@@ -6,13 +6,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const score = document.querySelector('#scoreboard');
     const audioElement = document.getElementById('geometry-dash-music')
     const spawner = document.querySelector("[cubespawner]");
-    
 
-    // Add event listener to the button
     startGame.addEventListener('click', () => {
         console.log("Start Button: Click!")
-
-        
         links.parentNode.removeChild(links)
         settingsWrapper.parentNode.removeChild(settingsWrapper)
         score.setAttribute('visible', true);

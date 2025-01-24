@@ -1,31 +1,35 @@
-AFRAME.registerComponent('mapcheck', {
+AFRAME.registerComponent('vrsetup', {
     init: function () {
       const sceneEl = this.el.sceneEl;
-      const camera = document.querySelector('[camera]').setAttribute('position', { x: 5, y: 2, z: -3 });
 
-      const linkEls = document.querySelectorAll('.link');
+
+      const sky = document.getElementById('image-360');
         
-      if(!linkEls) {
+      if(!sky) {
         return;
       }
       sceneEl.addEventListener('enter-vr', () => {
-        camera.setAttribute('position', {x: 0, y: -1.6, z: 0});
-
         console.log("IS AR: ", sceneEl.isAR)
-        const isAR = sceneEl.xrSession && sceneEl.xrSession.mode === 'immersive-ar';
+        const xrSession = sceneEl.renderer.xr.getSession();
+        console.log(xrSession)
+        const mode = xrSession.environmentBlendMode;
+        const isAR = mode && mode === 'immersive-ar';
+
         if (isAR) {
-          console.log('AR-Modus aktiviert');
-          linkEls.forEach(link => {
-            link.setAttribute('visible', 'false');
-        })
+          this.enterAr()
         } else {
-            linkEls.forEach(link => {
-                link.setAttribute('visible', 'true');
-            })
-          console.log('VR-Modus aktiviert');
+          this.enterVr()
         }
       });
+    },
+    enterAr: function () {
+      this.sky.setAttribute('src', '')
+      this.sky.setAttribute('visible', 'false')
+    },
 
-    }
+    enterVr: function () {
+      this.sky.setAttribute('visible', 'true')
+      console.log('VR-Modus aktiviert');
+    },
   });
   

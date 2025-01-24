@@ -19,8 +19,7 @@
     <script src="./scoresystem.js"></script>
     <script src="./scoreboard.js"></script>
     <script src="./saber.js"></script>
-    <script src="./mapcheck.js"></script>
-    <script src="./controller-click.js"></script>
+    <script src="./vr_setup.js"></script>
     <script src="./controller.js"></script>
 
     <script id="link" type="text/html">
@@ -41,7 +40,7 @@
   pool__cubes="mixin: cube; size: 10"
   cubespawner
   scoresystem
-  mapcheck
+  vrsetup
   controller-click
   >
     <a-assets>
@@ -110,7 +109,7 @@
     </a-entity>
 
 
-    <a-entity controller oculus-touch-controls laser-controls="hand: left"
+    <a-entity controller laser-controls="hand: left"
     >
       <a-entity 
                 rotation="-45 0 0">
@@ -124,7 +123,7 @@
         ></a-box>
       </a-entity>
     </a-entity>
-    <a-entity controller oculus-touch-controls laser-controls="hand: right">
+    <a-entity controller laser-controls="hand: right">
       <a-entity 
                   rotation="-45 0 0">
           <a-box id="blueSaber" 
@@ -144,15 +143,6 @@
 </body>
 
 <script>
-AFRAME.registerComponent('collider-check', {
-  dependencies: ['raycaster'],
-
-  init: function () {
-    this.el.addEventListener('raycaster-intersection', function () {
-      console.log('Player hit something!');
-    });
-  }
-});
 
 </script>
 
