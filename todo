@@ -12,3 +12,4 @@ X bugfix this -> again counting for no reason
 - game end and replay possibility? 
 X sound for destroying cubes
 - different material for cubes (make sure to check color collision -> currently checks for material color!!)
+- event system destroy cube!!!
