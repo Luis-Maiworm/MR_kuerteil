@@ -1,4 +1,4 @@
-const cubeTypes = [
+export const cubeTypes = [
   {
     name: 'rayCube',
     classes: ['ray-destroy'],
@@ -39,7 +39,10 @@ AFRAME.registerComponent('cubespawner', {
     this.isSpawning = false;
   },
 
-  configureCube: function (cubeEl, cubeConfig) {
+  configureCube: function (cubeEl) {
+    const cubeConfig = cubeTypes[Math.floor(Math.random() * cubeTypes.length)]
+
+    cubeEl.dataset.name = cubeConfig.name; 
     cubeEl.className = 'cubes';
     cubeEl.removeAttribute('material', 'src');
     cubeConfig.classes?.forEach(c => cubeEl.classList.add(c))
@@ -85,9 +88,8 @@ AFRAME.registerComponent('cubespawner', {
 
     cubeEl.setAttribute('position', {x: positionX, y: positionY, z: positionZ});
 
-    config = cubeTypes[Math.floor(Math.random() * cubeTypes.length)]
 
-    this.configureCube(cubeEl, config);
+    this.configureCube(cubeEl);
 
     cubeEl.play();
   }

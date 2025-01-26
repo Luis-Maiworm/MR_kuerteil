@@ -2,6 +2,10 @@ X correct AR and VR detection
 - synch music
     - map selection + song selection
         - change cover of link elements (thumbnail image swap to -> text for map and song title instead)
-- flexible point system (eye contact more or less points)
+X flexible point system (eye contact more or less points)
+    - visualize scoring and losing points (small animation?) 
 - mobile clickable cubes
 - saber work on quest
+- disable saber raycasters!
+- allow more quest buttons than trigger button
+- game end and replay possibility? 

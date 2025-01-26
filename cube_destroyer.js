@@ -28,9 +28,11 @@ AFRAME.registerComponent('cubedestroyer', {
 
     destroyCube: function (isPositive) {
       console.log("Destroy Cube: ", this.el)
+      const isRayCube = this.el.dataset.name == "rayCube";
+      const points = isRayCube ? 2 : 1;
       const score = this.el.sceneEl.systems['scoresystem'];
-      if(isPositive) { score.addScore(1) }
-      else score.minusScore(1);
+      if(isPositive) { score.addScore(points) }
+      else score.minusScore(points);
       this.el.sceneEl.components.pool__cubes.returnEntity(this.el);
       this.el.setAttribute('visible', false);
     }

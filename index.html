@@ -15,7 +15,7 @@
     <script src="./start_game.js"></script>
     <script src="./cube_movement.js"></script>
     <script src="./cube_destroyer.js"></script>
-    <script src="./cube_spawner.js"></script>
+    <script src="./cube_spawner.js" type="module"></script>
     <script src="./scoresystem.js"></script>
     <script src="./scoreboard.js"></script>
     <script src="./saber.js"></script>
@@ -109,7 +109,7 @@
     </a-entity>
 
 
-    <a-entity controller laser-controls="hand: left"
+    <a-entity controller disable-raycaster laser-controls="hand: left"
     >
       <a-entity 
                 rotation="-45 0 0">
@@ -123,7 +123,7 @@
         ></a-box>
       </a-entity>
     </a-entity>
-    <a-entity controller laser-controls="hand: right">
+    <a-entity controller disable-raycaster laser-controls="hand: right">
       <a-entity 
                   rotation="-45 0 0">
           <a-box id="blueSaber" 
