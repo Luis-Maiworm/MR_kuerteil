@@ -19,13 +19,13 @@ AFRAME.registerComponent('startgame', {
         if (audioElement) {
           audioElement.loop = true;
           audioElement.volume = 0.1;
-          // audioElement.play()
-          //   .then(() => {
-          //     console.log('Audio gestartet und wird geloopt!');
-          //   })
-          //   .catch(error => {
-          //     console.error('Fehler beim Starten des Audios:', error);
-          //   });
+          audioElement.play()
+            .then(() => {
+              console.log('Audio gestartet und wird geloopt!');
+            })
+            .catch(error => {
+              console.error('Fehler beim Starten des Audios:', error);
+            });
         }
       
         spawner.components.cubespawner.startSpawning();
