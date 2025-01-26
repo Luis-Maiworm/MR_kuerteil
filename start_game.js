@@ -1,5 +1,8 @@
 
-document.addEventListener('DOMContentLoaded', () => {
+// document.addEventListener('DOMContentLoaded', () => {
+AFRAME.registerComponent('startgame', {
+  init: function () {
+
     const startGame = document.querySelector('#startGameButton');
     const links = document.querySelector('#links');
     const settingsWrapper = document.querySelector('#settingsWrapper');
@@ -15,17 +18,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (audioElement) {
           audioElement.loop = true;
-          audioElement.play()
-            .then(() => {
-              console.log('Audio gestartet und wird geloopt!');
-            })
-            .catch(error => {
-              console.error('Fehler beim Starten des Audios:', error);
-            });
+          audioElement.volume = 0.1;
+          // audioElement.play()
+          //   .then(() => {
+          //     console.log('Audio gestartet und wird geloopt!');
+          //   })
+          //   .catch(error => {
+          //     console.error('Fehler beim Starten des Audios:', error);
+          //   });
         }
       
         spawner.components.cubespawner.startSpawning();
 
       console.log('Links hidden and camera moved!');
     });
+  }
 });
+// });
