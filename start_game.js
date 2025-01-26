@@ -18,7 +18,7 @@ AFRAME.registerComponent('startgame', {
 
         if (audioElement) {
           audioElement.loop = true;
-          audioElement.volume = 0.1;
+          // audioElement.volume = 0.5;
           audioElement.play()
             .then(() => {
               console.log('Audio gestartet und wird geloopt!');
