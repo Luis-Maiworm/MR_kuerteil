@@ -27,6 +27,7 @@ AFRAME.registerComponent('cubedestroyer', {
     },
 
     destroyCube: function (isPositive) {
+      console.log("Destroy Cube: ", this.el)
       const score = this.el.sceneEl.systems['scoresystem'];
       if(isPositive) { score.addScore(1) }
       else score.minusScore(1);

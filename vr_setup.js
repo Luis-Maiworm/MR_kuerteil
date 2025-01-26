@@ -10,20 +10,15 @@ AFRAME.registerComponent('vrsetup', {
         return;
       }
       sceneEl.addEventListener('enter-vr', () => {
-        console.log("IS AR: ", sceneEl.isAR)
-        const xrSession = sceneEl.renderer.xr.getSession();
-        console.log(xrSession)
-        const mode = xrSession.environmentBlendMode;
-        const isAR = mode && mode === 'immersive-ar';
+        const isAR = sceneEl.is('ar-mode');
         
         if (isAR) {
-          
-          this.enterAr(sky, links)
-        } else {
           this.enterAr(sky, links)
           // const settingsWrapper = document.querySelector('#settingsWrapper');
           // settingsWrapper.components.layout.updateLayout();
           // this.enterVr(sky)
+        } else {
+          this.enterVr(sky, links)
         }
       });
     },
