@@ -42,9 +42,11 @@
   scoresystem
   vrsetup
   controller-click
+  startgame
   >
     <a-assets>
       <audio id="click-sound" src="https://cdn.aframe.io/360-image-gallery-boilerplate/audio/click.ogg"></audio>
+      <audio id="cube-destroy-sound" src="./assets/cube_destroy_sound.mp3"></audio>
       <audio id="geometry-dash-music" src="./assets/geometry_dash_music.mp3"></audio>
       <!-- Images. -->
       <img id="city" src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/city.jpg">
@@ -105,32 +107,32 @@
         animation__fusing="property: fusing; startEvents: fusing; from: 1 1 1; to: 0.1 0.1 0.1; dur: 1500"
         event-set__mouseenter="_event: mouseenter; color: springgreen"
         event-set__mouseleave="_event: mouseleave; color: black"
-        raycaster="showLine: true; far: 5; objects: .ray-destroy, .cubes, .link, #startGameButton"></a-cursor>
+        raycaster="showLine: true; far: 8; objects: .raycastable, .link, #startGameButton"></a-cursor>
     </a-entity>
 
 
-    <a-entity controller disable-raycaster laser-controls="hand: left"
+    <a-entity controller disable-raycaster raycaster="showLine: false;" laser-controls="hand: left"
     >
       <a-entity 
                 rotation="-45 0 0">
         <a-box id="redSaber" 
                color="red" 
-               width="0.05" 
-               height="1" 
-               depth="0.05"
+               width="0.03" 
+               height="1.5" 
+               depth="0.03"
                saber="red"
                aabb-collider="objects: .cubes"
         ></a-box>
       </a-entity>
     </a-entity>
-    <a-entity controller disable-raycaster laser-controls="hand: right">
+    <a-entity controller disable-raycaster raycaster="showLine: false;" laser-controls="hand: right">
       <a-entity 
                   rotation="-45 0 0">
           <a-box id="blueSaber" 
                  color="blue" 
-                 width="0.05" 
-                 height="1" 
-                 depth="0.05"
+                 width="0.03" 
+                 height="1.5" 
+                 depth="0.03"
                  saber="blue"
                  aabb-collider="objects: .cubes"
           ></a-box>

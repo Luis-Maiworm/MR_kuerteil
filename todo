@@ -3,10 +3,12 @@ X correct AR and VR detection
     - map selection + song selection
         - change cover of link elements (thumbnail image swap to -> text for map and song title instead)
 X flexible point system (eye contact more or less points)
-- bugfix this -> again counting for no reason
+X bugfix this -> again counting for no reason
     - visualize scoring and losing points (small animation?) 
 - mobile clickable cubes
 - saber work on quest
 - disable saber raycasters!
 - allow more quest buttons than trigger button
 - game end and replay possibility? 
+X sound for destroying cubes
+- different material for cubes (make sure to check color collision -> currently checks for material color!!)

@@ -43,7 +43,7 @@ AFRAME.registerComponent('cubespawner', {
     const cubeConfig = cubeTypes[Math.floor(Math.random() * cubeTypes.length)]
 
     cubeEl.dataset.name = cubeConfig.name; 
-    cubeEl.className = 'cubes';
+    cubeEl.className = 'raycastable';
     cubeEl.removeAttribute('material', 'src');
     cubeConfig.classes?.forEach(c => cubeEl.classList.add(c))
 
@@ -84,7 +84,7 @@ AFRAME.registerComponent('cubespawner', {
     
     var positionX = getRandomNumber(3, -1);
     var positionY = getRandomNumber(1.5, 1);
-    var positionZ = -25;
+    var positionZ = -10;
 
     cubeEl.setAttribute('position', {x: positionX, y: positionY, z: positionZ});
 
