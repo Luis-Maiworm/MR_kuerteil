@@ -14,26 +14,22 @@ AFRAME.registerComponent('saber', {
             saberEl.sceneEl.systems['scoresystem'].addScore(1);
             saberEl.sceneEl.components.pool__cubes.returnEntity(obj);
             obj.classList.remove('raycastable')
-            this.playDestroySound();
+            const audioElement = document.getElementById('cube-destroy-sound')
+            if (audioElement) {
+              // audioElement.loop = true;
+              audioElement.currentTime = 0;
+              audioElement.volume = 0.5;
+              audioElement.play()
+                .then(() => {
+                  console.log('Audio gestartet und wird geloopt!');
+                })
+                .catch(error => {
+                  console.error('Fehler beim Starten des Audios:', error);
+                });
+            }
           }
         }
       });
     },
 
-
-    playDestroySound: function () {
-      const audioElement = document.getElementById('cube-destroy-sound')
-      if (audioElement) {
-        // audioElement.loop = true;
-        audioElement.currentTime = 0;
-        audioElement.volume = 0.5;
-        audioElement.play()
-          .then(() => {
-            console.log('Audio gestartet und wird geloopt!');
-          })
-          .catch(error => {
-            console.error('Fehler beim Starten des Audios:', error);
-          });
-      }
-    }
 });
