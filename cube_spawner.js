@@ -1,7 +1,7 @@
 export const cubeTypes = [
   {
     name: 'rayCube',
-    classes: ['ray-destroy'],
+    classes: ['raycastable', 'ray-destroy'],
     // material: 'color: white; emissive: blue; emissiveIntensity: 0.8; ',
     material: 'src: url(./assets/eye.svg); repeat: 1 1;',
     components: {
@@ -11,7 +11,7 @@ export const cubeTypes = [
   },
   {
     name: 'saberCubeRed',
-    classes: ['saber-destroy'],
+    classes: ['raycastable', 'saber-destroy'],
     material: 'color: red;',
     components: {
       cubemovement: {},
@@ -20,7 +20,7 @@ export const cubeTypes = [
   },
   {
     name: 'saberCubeBlue',
-    classes: ['saber-destroy'],
+    classes: ['raycastable', 'saber-destroy'],
     material: 'color: blue;',
     components: {
       cubemovement: {},

@@ -26,8 +26,6 @@ AFRAME.registerComponent('cubedestroyer', {
     },
 
     destroyCube: function (isPositive) {
-      console.log("Destroy Cube: ", this.el)
-      // if(!this.el.getAttribute('visible')) return;
 
       const isRayCube = this.el.dataset.name == "rayCube";
       const points = isRayCube ? 2 : 1;
@@ -39,14 +37,13 @@ AFRAME.registerComponent('cubedestroyer', {
         score.minusScore(points); 
       }
       this.el.sceneEl.components.pool__cubes.returnEntity(this.el);
-      this.el.classList.remove('ray-destroy')
-      // this.el.setAttribute('visible', false);
+      this.el.classList.remove('ray-destroy');
+      this.el.classList.remove('raycastable');
     },
 
     playDestroySound: function () {
       const audioElement = document.getElementById('cube-destroy-sound')
       if (audioElement) {
-        // audioElement.loop = true;
         audioElement.currentTime = 0;
         audioElement.volume = 0.5;
         audioElement.play()

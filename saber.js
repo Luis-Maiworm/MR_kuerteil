@@ -14,6 +14,8 @@ AFRAME.registerComponent('saber', {
             saberEl.sceneEl.systems['scoresystem'].addScore(1);
             saberEl.sceneEl.components.pool__cubes.returnEntity(obj);
             obj.classList.remove('saber-deystroy')
+            obj.classList.remove('raycastable');
+
             const audioElement = document.getElementById('cube-destroy-sound')
             if (audioElement) {
               // audioElement.loop = true;

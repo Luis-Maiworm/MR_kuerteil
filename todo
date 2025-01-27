@@ -1,15 +1,20 @@
-X correct AR and VR detection
 - synch music
     - map selection + song selection
         - change cover of link elements (thumbnail image swap to -> text for map and song title instead)
+- disable saber raycasters!
+    - add RAYCASTABLE back -> for mobile (onClicks) -> but then raycaster of hands will work again!!!
+
+- visualize scoring and losing points (small animation?) 
+- mobile clickable cubes
+- game end and replay possibility? 
+- visually indicating the cube movements
+
+- different material for cubes (make sure to check color collision -> currently checks for material color!!)
+- event system destroy cube!!! -> and scoresystem!
+- allow more quest buttons than trigger button
+
+X saber work on quest
+X correct AR and VR detection
 X flexible point system (eye contact more or less points)
 X bugfix this -> again counting for no reason
-    - visualize scoring and losing points (small animation?) 
-- mobile clickable cubes
-- saber work on quest
-- disable saber raycasters!
-- allow more quest buttons than trigger button
-- game end and replay possibility? 
 X sound for destroying cubes
-- different material for cubes (make sure to check color collision -> currently checks for material color!!)
-- event system destroy cube!!!

@@ -107,11 +107,12 @@
         animation__fusing="property: fusing; startEvents: fusing; from: 1 1 1; to: 0.1 0.1 0.1; dur: 1500"
         event-set__mouseenter="_event: mouseenter; color: springgreen"
         event-set__mouseleave="_event: mouseleave; color: black"
-        raycaster="showLine: true; far: 8; objects: .ray-destroy, .link, #startGameButton"></a-cursor>
+        raycaster="showLine: true; far: 8; objects: .raycastable, .ray-destroy, .link, #startGameButton"></a-cursor>
     </a-entity>
 
 
-    <a-entity controller disable-raycaster laser-controls="hand: left"
+    <!-- <a-entity controller disable-raycaster laser-controls="hand: left; raycaster: false;" -->
+    <a-entity controller laser-controls="hand: left" raycaster="enabled: false; showLine= false"
     >
       <a-entity 
                 rotation="-45 0 0">
@@ -125,7 +126,7 @@
         ></a-box>
       </a-entity>
     </a-entity>
-    <a-entity controller disable-raycaster laser-controls="hand: right">
+    <a-entity controller laser-controls="hand: right" raycaster="enabled: false; showLine= false">
       <a-entity 
                   rotation="-45 0 0">
           <a-box id="blueSaber" 
