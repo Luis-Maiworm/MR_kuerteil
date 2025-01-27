@@ -1,7 +1,7 @@
 export const cubeTypes = [
   {
     name: 'rayCube',
-    classes: ['raycastable', 'ray-destroy'],
+    classes: ['ray-destroy'],
     // material: 'color: white; emissive: blue; emissiveIntensity: 0.8; ',
     material: 'src: url(./assets/eye.svg); repeat: 1 1;',
     components: {
@@ -11,7 +11,7 @@ export const cubeTypes = [
   },
   {
     name: 'saberCubeRed',
-    classes: ['raycastable', 'saber-destroy'],
+    classes: ['saber-destroy'],
     material: 'color: red;',
     components: {
       cubemovement: {},
@@ -20,7 +20,7 @@ export const cubeTypes = [
   },
   {
     name: 'saberCubeBlue',
-    classes: ['raycastable', 'saber-destroy'],
+    classes: ['saber-destroy'],
     material: 'color: blue;',
     components: {
       cubemovement: {},
@@ -41,7 +41,7 @@ AFRAME.registerComponent('cubespawner', {
 
   configureCube: function (cubeEl) {
     const cubeConfig = cubeTypes[Math.floor(Math.random() * cubeTypes.length)]
-
+    // cubeEl.classList.add('raycastable')
     cubeEl.dataset.name = cubeConfig.name; 
     cubeEl.removeAttribute('material', 'src');
     cubeConfig.classes?.forEach(c => cubeEl.classList.add(c))
