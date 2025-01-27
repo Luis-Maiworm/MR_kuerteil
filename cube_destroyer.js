@@ -39,7 +39,7 @@ AFRAME.registerComponent('cubedestroyer', {
         score.minusScore(points); 
       }
       this.el.sceneEl.components.pool__cubes.returnEntity(this.el);
-      this.el.classList.remove('raycastable')
+      this.el.classList.remove('ray-destroy')
       // this.el.setAttribute('visible', false);
     },
 
