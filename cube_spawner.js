@@ -39,9 +39,11 @@ AFRAME.registerComponent('cubespawner', {
     this.isSpawning = false;
   },
 
+  // BASSHIT EVENT
+
   configureCube: function (cubeEl) {
     const cubeConfig = cubeTypes[Math.floor(Math.random() * cubeTypes.length)]
-    // cubeEl.classList.add('raycastable')
+    cubeEl.classList.add('raycastable')
     cubeEl.dataset.name = cubeConfig.name; 
     cubeEl.removeAttribute('material', 'src');
     cubeConfig.classes?.forEach(c => cubeEl.classList.add(c))

@@ -4,14 +4,14 @@
 - disable saber raycasters!
     - add RAYCASTABLE back -> for mobile (onClicks) -> but then raycaster of hands will work again!!!
 
-- visualize scoring and losing points (small animation?) 
-- mobile clickable cubes
 - game end and replay possibility? 
 - visually indicating the cube movements
 
-- different material for cubes (make sure to check color collision -> currently checks for material color!!)
-- event system destroy cube!!! -> and scoresystem!
 - allow more quest buttons than trigger button
+
+- event system destroy cube!!! -> and scoresystem!
+- different material for cubes (make sure to check color collision -> currently checks for material color!!)
+- mobile clickable cubes
 
 X saber work on quest
 X correct AR and VR detection

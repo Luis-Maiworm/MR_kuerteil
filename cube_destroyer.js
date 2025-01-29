@@ -10,7 +10,7 @@ AFRAME.registerComponent('cubedestroyer', {
         }
       })
 
-      el.addEventListener('click', function () {
+      el.addEventListener('click', () => {
         if(el.classList.contains('saber-destroy')){
           destroyCube(true);
         }
