@@ -64,9 +64,9 @@ AFRAME.registerComponent('manage_game', {
       .catch(error => {
         console.error('Error starting Music:', error);
       });
-      setTimeout(() => {
-        this.audioElement.currentTime = this.audioElement.duration;
-      }, 5000)
+      // setTimeout(() => {
+      //   this.audioElement.currentTime = this.audioElement.duration;
+      // }, 5000)
     }
     this.spawner.components.cubespawner.startSpawning();
   }
