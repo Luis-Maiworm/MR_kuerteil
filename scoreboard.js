@@ -11,8 +11,10 @@ AFRAME.registerComponent('scoreboard', {
     
         this.el.sceneEl.addEventListener('update_score', (event) => {
             const newScore = event.detail.score;
-            console.log("SCOREBOARD", newScore)
             this.el.setAttribute('text', `value: Score: ${newScore}`);
+            if(newScore < 0) {
+                this.el.emit('game_end', { positiveEnd: false })
+            }
         });
     }
   });
