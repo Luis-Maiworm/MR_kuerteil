@@ -12,7 +12,7 @@ AFRAME.registerComponent('scoreboard', {
         this.el.sceneEl.addEventListener('update_score', (event) => {
             const newScore = event.detail.score;
             this.el.setAttribute('text', `value: Score: ${newScore}`);
-            if(newScore < 0) {
+            if(newScore < -5) {
                 this.el.emit('game_end', { positiveEnd: false })
             }
         });
