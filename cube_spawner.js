@@ -2,7 +2,6 @@ export const cubeTypes = [
   {
     name: 'rayCube',
     classes: ['ray-destroy'],
-    // material: 'color: white; emissive: blue; emissiveIntensity: 0.8; ',
     material: 'src: url(./assets/eye.svg); repeat: 1 1;',
     components: {
       cubemovement: {},
@@ -38,8 +37,6 @@ AFRAME.registerComponent('cubespawner', {
     this.timeStep = 0;
     this.isSpawning = false;
   },
-
-  // BASSHIT EVENT
 
   configureCube: function (cubeEl) {
     const cubeConfig = cubeTypes[Math.floor(Math.random() * cubeTypes.length)]
@@ -88,7 +85,6 @@ AFRAME.registerComponent('cubespawner', {
     var positionZ = -10;
 
     cubeEl.setAttribute('position', {x: positionX, y: positionY, z: positionZ});
-
 
     this.configureCube(cubeEl);
 

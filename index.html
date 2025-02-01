@@ -36,7 +36,6 @@
     </script>
 </head>
 <body>
-  <!-- pool__cubes="mixin: cube; size:10" -->
   <a-scene
   renderer="antialias: true"
   pool__cubes="mixin: cube; size: 10"
@@ -50,9 +49,7 @@
     <a-assets>
       <audio id="click-sound" src="https://cdn.aframe.io/360-image-gallery-boilerplate/audio/click.ogg"></audio>
       <audio id="cube-destroy-sound" src="./assets/cube_destroy_sound.mp3"></audio>
-      <!-- <audio id="geometry-dash-music" src="./assets/cube_destroy_sound.mp3"></audio> -->
       <audio id="geometry-dash-music" src="./assets/geometry_dash_music.mp3"></audio>
-      <!-- Images. -->
       <img id="city" src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/city.jpg">
       <img id="city-thumb" src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/thumb-city.jpg">
       <img id="cubes" src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/cubes.jpg">
@@ -65,9 +62,6 @@
         position="0 1 -25"
         scale="0.5 0.5 0.5"
         ></a-mixin>
-        <!-- cubemovement -->
-        <!-- cubedestroyer -->
-
     </a-assets> 
     
 
@@ -75,7 +69,7 @@
              animation__fade="property: components.material.material.color; type: color; from: #FFF; to: #000; dur: 300; startEvents: fade"
              animation__fadeback="property: components.material.material.color; type: color; from: #000; to: #FFF; dur: 300; startEvents: animationcomplete__fade"></a-sky>
 
-    <a-text id="textMessage" visible="false" align="center" color="black" scale="1.4 1.4 1.4" position="0.2 3 -4.1"></a-text>
+    <a-text id="textMessage" visible="false" align="center" color="white" scale="1.4 1.4 1.4" position="0.2 3 -4.1"></a-text>
 
     <a-entity id="settingsWrapper" position="0 1.6 0">
       <a-text value="Settings" align="center" scale="1.5 1.5 1.5" position="0.2 0 -4"></a-text>
@@ -115,8 +109,6 @@
         raycaster="showLine: true; far: 8; objects: .raycastable, .ray-destroy, .link, #startGameButton"></a-cursor>
     </a-entity>
 
-
-    <!-- <a-entity controller disable-raycaster laser-controls="hand: left; raycaster: false;" -->
     <a-entity controller laser-controls="hand: left" raycaster="enabled: false; showLine= false"
     >
       <a-entity 

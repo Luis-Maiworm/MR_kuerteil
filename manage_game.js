@@ -11,6 +11,7 @@ AFRAME.registerComponent('manage_game', {
     this.spawner = document.querySelector('[cubespawner]');
     this.scoreSystem = this.el.sceneEl.systems['[scoresystem]'];
     this.message = document.querySelector('#textMessage')
+    this.scoresystem = this.el.sceneEl.systems['scoresystem'];
 
     this.startGame.addEventListener('click', () => {
         this.gameStart();
@@ -30,12 +31,10 @@ AFRAME.registerComponent('manage_game', {
   },
 
   gameEnd: function (isPositiveEnd) {
-    // show message regarding isFinished positive or nah
     this.spawner.components.cubespawner.stopSpawning();
     this.settingsWrapper.setAttribute('position', '0 1.6 0');
-    let scoresystem = this.el.sceneEl.systems['scoresystem'];
-    let score = scoresystem.getScore();
-    scoresystem.resetScore();
+    let score = this.scoresystem.getScore();
+    this.scoresystem.resetScore();
     this.scoreboard.setAttribute('position', '0.2 1000 -8');
     this.audioElement.pause();
     this.audioElement.currentTime = 0;
@@ -51,12 +50,10 @@ AFRAME.registerComponent('manage_game', {
   },
   
   gameStart: function () {
-    
+    this.scoresystem.resetScore();
     this.scoreboard.setAttribute('position', '0.2 1 -8');
     this.settingsWrapper.setAttribute('position', '0 1000 0');
     if (this.audioElement) {
-      // this.audioElement.loop = true;
-      // audioElement.volume = 0.5;
       this.audioElement.play()
       .then(() => {
         console.log('Music started!');
@@ -72,4 +69,3 @@ AFRAME.registerComponent('manage_game', {
   }
 
 });
-// });

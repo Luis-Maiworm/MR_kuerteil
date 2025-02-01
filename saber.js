@@ -18,7 +18,6 @@ AFRAME.registerComponent('saber', {
 
             const audioElement = document.getElementById('cube-destroy-sound')
             if (audioElement) {
-              // audioElement.loop = true;
               audioElement.currentTime = 0;
               audioElement.volume = 0.5;
               audioElement.play()

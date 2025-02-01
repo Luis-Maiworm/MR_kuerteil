@@ -1,9 +1,7 @@
 AFRAME.registerComponent('vrsetup', {
     init: function () {
       const sceneEl = this.el.sceneEl;
-      
       const links = document.querySelectorAll('.link');
-      
       const sky = document.getElementById('image-360');
       
       if(!sky) {
@@ -14,16 +12,12 @@ AFRAME.registerComponent('vrsetup', {
         
         if (isAR) {
           this.enterAr(sky, links)
-          // const settingsWrapper = document.querySelector('#settingsWrapper');
-          // settingsWrapper.components.layout.updateLayout();
-          // this.enterVr(sky)
         } else {
           this.enterVr(sky, links)
         }
       });
     },
     enterAr: function (sky, links) {
-      // settingsWrapper.parentNode.removeChild(settingsWrapper)
       links.forEach(link => {
         link.parentNode.removeChild(link)
       })
