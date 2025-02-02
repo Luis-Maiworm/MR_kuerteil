@@ -1,9 +1,10 @@
 Folgende Links habe ich als Inspiration für mein Projekt genutzt. Vor allem die erste Quelle war mir für die Erstellung des Beat Saber Grundgerüsts eine große Hilfe. 
 Hinzugefügt habe ich ein interaktives Menü zur Auswahl einer Map, sowie zum Starten des Spiels. 
-Hinzugefügt wurde ebenfalls: eine ausführlichere Cube Auswahl, inklusive neuen Block mit Grafik, welcher durch Anschauen zerstört werden kann. 
+Hinzugefügt wurde ebenfalls: eine ausführlichere Cube Auswahl, inklusive neuer Block mit Grafik, welcher durch Anschauen zerstört werden kann.
 
-Das Spiel geht entweder so lange, dass die Musik aufhört
 
+Das Spiel geht solange, bis die Musik aufhört.
+Zu Testzwecken habe ich in die "manage_game.js" Datei, Zeilen 64-66 integriert (auskommentiert), die den Track auf 10 Sekunden begrenzen, damit man das positive Spielende simulieren kann.
 
 https://aframe.io/docs/1.6.0/guides/building-a-360-image-gallery.html
 
