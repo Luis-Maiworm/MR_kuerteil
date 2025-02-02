@@ -1,4 +1,4 @@
-Meine Idee war das Erstellen eines Beat Saber Clones. Da das Vorhaben auf den ersten Blick recht umfangreich wirkt, habe ich mir entsprechend vorhandene Beispiele angeschaut, und festgestellt, dass es wenig Sinn macht von Scratch anzufangen. Um die grundlegende Spielmechanik zu programmieren, hätte ich mich ohnehin an externen Quellen orientieren müssen. Daher habe ich mich dazu entschieden, vorhandenen Quellcode als Basis zu nehmen, diesen zu erweitern und bei Bedarf anzupassen.
+Meine Idee war das Erstellen eines Beat Saber Clones. Da das Vorhaben auf den ersten Blick recht umfangreich wirkte, habe ich mir entsprechend vorhandene Beispiele angeschaut und festgestellt, dass es wenig Sinn macht, von Scratch anzufangen. Um die grundlegende Spielmechanik zu programmieren, hätte ich mich ohnehin an externen Quellen orientieren müssen. Daher habe ich mich dazu entschieden, vorhandenen Quellcode als Basis zu nehmen, ihn zu erweitern und bei Bedarf anzupassen.
 
 Folgende Links habe ich als Inspiration für mein Projekt genutzt. Vor allem die erste Quelle (Link 1) war mir für die Erstellung des Beat Saber Grundgerüsts eine große Hilfe. 
 Die offizielle A-Frame Dokumentation hat mir in vielen Situationen ebenfalls geholfen, genauso wie Forenbeiträge bei Stackoverflow. 
@@ -7,12 +7,12 @@ Link 1: https://glitch.com/edit/#!/aframe-simple-saber?path=index.html%3A31%3A42
 Link 2: https://aframe.io/docs/1.6.0/guides/building-a-360-image-gallery.html
 
 Hinzugefügt habe ich ein interaktives Menü zur Auswahl einer Map (Link 2), sowie zum Starten des Spiels. 
-Hinzugefügt wurde ebenfalls: eine ausführlichere Cube Auswahl (zufällig), inklusive eines neuen Blockes mit Grafik, welcher durch Anschauen (Raycaster) zerstört werden kann. 
-Die roten Blöcke, können nur vom roten Saber zerstört werden, die blauen Blöcke entsprechend vom blauen Saber. Diese zählen 1 Punkt.
+Hinzugefügt wurde ebenfalls: eine ausführlichere Cube Auswahl (zufällig), inklusive eines neuen Blocks mit Grafik, der durch Anschauen (Raycaster) zerstört werden kann. 
+Die roten Blöcke können nur vom roten Saber zerstört werden, die blauen Blöcke entsprechend vom Blauen. Diese zählen 1 Punkt.
 Die Raycaster Blöcke, zählen 2 Punkte.
-Die Punkteübersicht ist während des Spiels jederzeit einsehbar. Bei positivem Spielausgang, werden ebenfalls die erreichten Punkte gezeigt.
+Die Punkteübersicht ist während des Spiels jederzeit einsehbar. Bei positivem Spielausgang werden ebenfalls die erreichten Punkte gezeigt.
 
-Bei Spielstart, werden die UI Komponenten aus-, und das Scoreboard eingeblendet. Bei Spielende wird dies rückgängig gemacht.
+Bei Spielstart, werden die UI Komponenten ausgeblendet, und das Scoreboard eingeblendet. Am Spielende wird dies rückgängig gemacht.
 Gleichzeitig beginnt das Spielen der Musik und das Spawnen der Würfel. Bei Zerstören der Würfel, wird ein Soundeffekt abgespielt.
 
 Das Spielende wird erreicht, wenn der Musiktrack endet. Je nach Ende (Sieg oder Niederlage) wird für eine kurze Zeit ein Text eingeblendet, der dem User Feedback gibt.
@@ -20,7 +20,12 @@ Zu Testzwecken habe ich in die "manage_game.js" Datei, Zeilen 64-66 integriert (
 Der User verliert das Spiel, wenn 5 Minuspunkte erreicht werden.
 
 
+Die Applikation läuft ebenfalls im Browser und auf dem Smartphone. Das Berühren der Saber wird durch Kombination von Raycaster zum Selektieren und Klick Event (linke Maustaste oder Touchscreen (mobil)) ersetzt.
+Auf dem Smartphone ist mir die Integration der Click Events nicht vernünftig gelungen - die UI lässt sich mobil bedienen, die roten und blauen Blöcke lassen sich aber nicht zerstören. Nur die Raycaster Blöcke funktionieren wie gewünscht.
+
+Link zur App: https://luis-maiworm.github.io/MR_kuerteil/
+
 
 Außerdem:
-Ich werde die Zustimmung zum Zeigen der Videos geben, würde Sie aber bitten, lediglich die VR Teile davon zu nutzen. Die AR Szenen, in der man meine Wohnung sieht, würde ich gerne davon ausnehmen.
-Ich habe die einzelnen Komponenten in verschiedene mp4 Dateien präsentiert, die sind nach Feature benannt.
+Ich werde die Zustimmung zum Zeigen der Videos geben, würde Sie aber bitten, lediglich die VR Teile davon zu nutzen. Die AR Szenen, in denen man meine Wohnung sieht, würde ich gerne davon ausnehmen.
+Ich habe die einzelnen Komponenten in verschiedenen MP4 Dateien präsentiert, die nach Feature benannt sind.
